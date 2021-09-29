@@ -37,9 +37,9 @@ Ao criar a sessão do usuário, o front-end irá enviar o `device_id` que é uma
 Um exemplo do request enviado pelo front_end na criação de uma sessão:
 ```json
 {
-	"email": "customer@customer.com",
-	"password": "123123123",
-	"device_id":"a848f104-25f3-4b43-a3d0-03829769990c"
+  "email": "customer@customer.com",
+  "password": "123123123",
+  "device_id":"a848f104-25f3-4b43-a3d0-03829769990c"
 }
 ```
 
