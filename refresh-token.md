@@ -12,7 +12,7 @@ No entanto, precisamos ter uma estratégia que limite ou reduza o poder do refre
 
 * Garantir que o usuário que está solicitando um novo access_token seja o mesmo usuário que gerou o refresh token
 
-* Não permitir que o usuário gere um novo access_token antes de ele ter sido expirado.
+* Não permitir que o usuário gere um novo access_token antes de seu ultimo access token ter sido expirado.
 
 
 ## Implementação
