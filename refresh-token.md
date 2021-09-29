@@ -129,10 +129,13 @@ Um exemplo dessas verificações no RefreshTokenService:
       throw new AppError('Refresh token inválido', 401);
     }
 ```
+> É importante também retornar erros genéricos caso nosso refresh token esteja expirado por exemplo, assim não informamos para possíveis invasores em qual verificação o refresh token não passou
+
+
 
 Então se o refresh_token fornecido passou por todas essas verificações, podemos apagar ele do banco de dados e gerar um novo access_token e refresh_token para o usuário.
 
 
 # Conclusão 
 
-Com as medidas tomadas, por mais que o nosso refresh fique exposto a invasores no front-end, nossa API está garantindo que um novo access_token só vai ser gerado, pelo mesmo dispositivo que ele foi criado.
+Com as medidas tomadas, por mais que o nosso refresh fique exposto a invasores no front-end, nossa API está garantindo que um novo access_token só vai ser gerado, pelo mesmo dispositivo que ele foi criado, aumentando assim a segurança de nossa aplicação.
