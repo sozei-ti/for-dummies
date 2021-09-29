@@ -10,7 +10,7 @@ No entanto, precisamos ter uma estratégia que limite ou reduza o poder do refre
 
 * O Refresh token deve ser um hash que não contenha nenhuma informação referente ao usuário ou ao access_token, e sim referenciar essa informação que está armazenada no banco de dados.
 
-* Garantir que o usuário que está solicitando um novo access_token seja o mesmo usuário que gerou esse refresh token
+* Garantir que o usuário que está solicitando um novo access_token seja o mesmo usuário que gerou o refresh token
 
 * Não permitir que o usuário gere um novo access_token antes de ele ter sido expirado.
 
