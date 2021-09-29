@@ -1,4 +1,4 @@
-# Introdução
+## Introdução
 
 Access tokens com curto tempo de duração contribuem para uma maior segurança de sua aplicação, porém quando expirados o usuário precisa logar novamente para gerar um novo token e frequentemente isso se torna uma experiência frustante.
 
@@ -6,7 +6,7 @@ O Refresh token vem para auxiliar no balanceamento entre a segurança de sua apl
 
 No entanto, precisamos ter uma estratégia que limite ou reduza o poder do refresh token caso ele seja vazado, já que todos que possuem um refresh token podem solicitar um novo access token a qualquer momento.
 
-# Medidas de Segurança
+## Medidas de Segurança
 
 * O Refresh token deve ser um hash que não contenha nenhuma informação referente ao usuário ou ao access_token, e sim referenciar essa informação que está armazenada no banco de dados.
 
