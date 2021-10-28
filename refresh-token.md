@@ -1,4 +1,4 @@
-# Introdução
+## Introdução
 
 Access tokens com curto tempo de duração contribuem para uma maior segurança de sua aplicação, porém quando expirados o usuário precisa logar novamente para gerar um novo token e frequentemente isso se torna uma experiência frustante.
 
@@ -6,13 +6,13 @@ O Refresh token vem para auxiliar no balanceamento entre a segurança de sua apl
 
 No entanto, precisamos ter uma estratégia que limite ou reduza o poder do refresh token caso ele seja vazado, já que todos que possuem um refresh token podem solicitar um novo access token a qualquer momento.
 
-# Medidas de Segurança
+## Medidas de Segurança
 
 * O Refresh token deve ser um hash que não contenha nenhuma informação referente ao usuário ou ao access_token, e sim referenciar essa informação que está armazenada no banco de dados.
 
-* Garantir que o usuário que está solicitando um novo access_token seja o mesmo usuário que gerou o refresh token usado para solicitação
+* Garantir que o usuário que está solicitando um novo access_token seja o mesmo usuário que gerou o refresh token
 
-* Não permitir que o usuário gere um novo access_token antes de ele ter sido expirado.
+* Não permitir que o usuário gere um novo access_token antes de seu ultimo access token ter sido expirado.
 
 
 ## Implementação
@@ -37,9 +37,9 @@ Ao criar a sessão do usuário, o front-end irá enviar o `device_id` que é uma
 Um exemplo do request enviado pelo front_end na criação de uma sessão:
 ```json
 {
-	"email": "customer@customer.com",
-	"password": "123123123",
-	"device_id":"a848f104-25f3-4b43-a3d0-03829769990c"
+  "email": "customer@customer.com",
+  "password": "123123123",
+  "device_id":"a848f104-25f3-4b43-a3d0-03829769990c"
 }
 ```
 
@@ -129,10 +129,13 @@ Um exemplo dessas verificações no RefreshTokenService:
       throw new AppError('Refresh token inválido', 401);
     }
 ```
+> É importante também retornar erros genéricos caso nosso refresh token esteja expirado por exemplo, assim não informamos para possíveis invasores em qual verificação o refresh token não passou
+
+
 
 Então se o refresh_token fornecido passou por todas essas verificações, podemos apagar ele do banco de dados e gerar um novo access_token e refresh_token para o usuário.
 
 
 # Conclusão 
 
-Com as medidas tomadas, por mais que o nosso refresh fique exposto a invasores no front-end, nossa API está garantindo que um novo access_token só vai ser gerado, pelo mesmo dispositivo que ele foi criado.
+Com as medidas tomadas, por mais que o nosso refresh fique exposto a invasores no front-end, nossa API está garantindo que um novo access_token só vai ser gerado, pelo mesmo dispositivo que ele foi criado, aumentando assim a segurança de nossa aplicação.
